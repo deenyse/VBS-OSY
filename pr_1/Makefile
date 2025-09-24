@@ -21,3 +21,6 @@ folders:
 
 clean:
 	rm -rf build genstr strcheck
+
+setlib:
+	export LD_LIBRARY_PATH=build/lib_small
