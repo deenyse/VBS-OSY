@@ -5,7 +5,8 @@ char *encrypt_line(char *line, int key)
 
     for (int i = 0; i < strlen(line); i++)
     {
-        line[i] = line[i] ^ key;
+        if (line[i] != '\n')
+            line[i] = line[i] ^ key;
     }
 
     return line;

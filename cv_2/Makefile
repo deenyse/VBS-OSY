@@ -1,9 +1,9 @@
 BUILD_TARGET = build
 LIBS = -L./$(BUILD_TARGET) -lgenstr
 
-all: genstr 
+all: genstr encrypt
 
-genstr: static_libs encrypt
+genstr: static_libs 
 	gcc genstr.c $(LIBS) -o genstr
 
 encrypt: dynamic_libs
@@ -22,7 +22,12 @@ folders:
 	mkdir -p $(BUILD_TARGET) $(BUILD_TARGET)/caesar_lib $(BUILD_TARGET)/rot_lib $(BUILD_TARGET)/xor_lib  
 
 clean:
-	rm -rf $(BUILD_TARGET) genstr strcheck
+	rm -rf $(BUILD_TARGET) genstr encrypt
+
+test: all
+	chmod +x ./tests.sh
+	@echo "=== Running tests ==="
+	@./tests.sh
 
 setlib:
 	export LD_LIBRARY_PATH=build/xor_lib

@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 
     if (argc < 2)
     {
-        fprintf(stderr, "Not enough arguments were given: %s\n", dlerror());
+        fprintf(stderr, "Not enough arguments were given\n");
         return EXIT_FAILURE;
     }
 

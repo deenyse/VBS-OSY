@@ -1,15 +1,23 @@
 #include <string.h>
 
+#include <string.h>
+
 char *encrypt_line(char *line, int key)
 {
+    int len = strlen(line);
 
-    for (int i = 0; i < strlen(line); i++)
+    key = (key % 26 + 26) % 26;
+
+    for (int i = 0; i < len; i++)
     {
-        if ((line[i] >= 'a' && line[i] <= 'z'))
+        if (line[i] >= 'a' && line[i] <= 'z')
+        {
             line[i] = ((line[i] - 'a') + key) % 26 + 'a';
-
-        if (line[i] >= 'A' && line[i] <= 'Z')
+        }
+        else if (line[i] >= 'A' && line[i] <= 'Z')
+        {
             line[i] = ((line[i] - 'A') + key) % 26 + 'A';
+        }
     }
 
     return line;

@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 {
     if (argc < 2)
     {
-        fprintf(stderr, "Not enough arguments were given: %s\n", dlerror());
+        fprintf(stderr, "Not enough arguments were given\n");
         return EXIT_FAILURE;
     }
     int key = atoi(argv[1]);
@@ -20,21 +20,21 @@ int main(int argc, char *argv[])
     encrypt_lib = dlopen("libencrypt.so", RTLD_LAZY);
     if (!encrypt_lib)
     {
-        fprintf(stderr, "Failed to load library: %s\n", dlerror());
+        fprintf(stderr, "Failed to load library");
         return EXIT_FAILURE;
     }
 
     encrypt_line = dlsym(encrypt_lib, "encrypt_line");
     if (!encrypt_line)
     {
-        fprintf(stderr, "Failed to find symbol 'encrypt_line': %s\n", dlerror());
+        fprintf(stderr, "Failed to find symbol 'encrypt_line'");
         dlclose(encrypt_lib);
         return EXIT_FAILURE;
     }
 
     while (getline(&line, &len, stdin) != -1)
     {
-        printf("%s\n", encrypt_line(line, key));
+        printf("%s", encrypt_line(line, key));
     }
 
     return 0;
