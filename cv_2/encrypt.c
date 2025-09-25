@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Not enough arguments were given\n");
         return EXIT_FAILURE;
     }
-    int key = atoi(argv[1]);
+    int key = (int)strtol(argv[1], NULL, 0);
     char *line = NULL;
     size_t len = 0;
 
