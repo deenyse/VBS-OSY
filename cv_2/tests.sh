@@ -8,7 +8,11 @@ OUTPUT_DIR="build/output"
 mkdir -p "$OUTPUT_DIR"
 
 shopt -s nullglob
+
+./genstr 10 10 > ./tests/input/input3.txt
+
 for infile in "$INPUT_DIR"/input*.txt; do
+
     testname=$(basename "$infile" .txt)
 
     encrypted="$OUTPUT_DIR/${testname}_encrypted.out"
